@@ -15,26 +15,47 @@
 
 ### Program:
 ```python
-# Visitor segmentation based on characteristics
-# read the data
-/*WRITE YOUR CODE HERE
+cluster={"Young":(df['Age']<=30),"Middle":((df['Age']>30)&(df['Age']<=50)),"Old": (df['Age']>50)}
+count=[]
+for group,condition in cluster.items():
+    visitors=df[condition]
+    count.append(len(visitors))
+    print(f"The visitors on {group} age are")
+    print(visitors)
+    print("count=",len(visitors))
 
-# Perform segmentation based on characteristics (e.g., age groups)
-/*WRITE YOUR CODE HERE
+import matplotlib.pyplot as plt
+plt.figure(figsize=(8, 6))
+plt.bar(['Young','Middle','Old'],count,color='skyblue')
+plt.xlabel('Age Groups')
+plt.ylabel('Number of Visitors')
+plt.title('Visitor Distribution Across Age Groups')
+plt.show()
+
+df1=df['Age']
+df2=df['Income']
+df3=pd.concat([df1,df2],axis=1)
+s=StandardScaler()
+newdf=s.fit_transform(df3)
+k=KMeans(n_clusters=4,random_state=55)
+df3['cluster']=k.fit_predict(newdf)
+df3
 
 ```
 ### Output:
 
 ### Visualization:
 ```python
-# Create a list to store counts of visitors in each age group
-/*WRITE YOUR CODE HERE
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
 
-# Count visitors in each age group
-/*WRITE YOUR CODE HERE
-    
-# Define age group labels and plot a bar chart
-/*WRITE YOUR CODE HERE
+import matplotlib.pyplot as plt
+plt.figure(figsize=(8, 6))
+plt.scatter(x=df3['Age'],y=df3['Income'],c=df3['cluster'])
+plt.xlabel('Age')
+plt.ylabel('Income')
+plt.title("Visitor Distribution in Different Clusters")
+plt.show()
 
 plt.figure(figsize=(8, 6))
 plt.bar(age_group_labels, visitor_counts, color='skyblue')
@@ -44,6 +65,9 @@ plt.title('Visitor Distribution Across Age Groups')
 plt.show()
 ```
 ### Output:
+<img width="1141" height="720" alt="Screenshot 2026-02-07 142315" src="https://github.com/user-attachments/assets/70f8e65f-ca6d-4a2e-b4ff-1909a86dc730" />
+
+<img width="1291" height="694" alt="Screenshot 2026-02-07 144336" src="https://github.com/user-attachments/assets/2ede4fd5-a530-487b-a83a-61b285405c59" />
 
 
 ### Result:
