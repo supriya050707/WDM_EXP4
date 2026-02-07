@@ -1,5 +1,5 @@
 ### EX4 Implementation of Cluster and Visitor Segmentation for Navigation patterns
-### DATE: 
+### DATE: 07/02/2026
 ### AIM: To implement Cluster and Visitor Segmentation for Navigation patterns in Python.
 ### Description:
 <div align= "justify">Cluster visitor segmentation refers to the process of grouping or categorizing visitors to a website, 
@@ -24,14 +24,8 @@ for group,condition in cluster.items():
     print(visitors)
     print("count=",len(visitors))
 
-import matplotlib.pyplot as plt
-plt.figure(figsize=(8, 6))
-plt.bar(['Young','Middle','Old'],count,color='skyblue')
-plt.xlabel('Age Groups')
-plt.ylabel('Number of Visitors')
-plt.title('Visitor Distribution Across Age Groups')
-plt.show()
-
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
 df1=df['Age']
 df2=df['Income']
 df3=pd.concat([df1,df2],axis=1)
@@ -44,10 +38,15 @@ df3
 ```
 ### Output:
 
+<img width="797" height="808" alt="Screenshot 2026-02-07 142622" src="https://github.com/user-attachments/assets/d40094f6-5a2f-446a-bd00-3639a2f1679b" />
+
+<img width="505" height="808" alt="Screenshot 2026-02-07 144233" src="https://github.com/user-attachments/assets/aa594b96-fc99-4e6d-9106-0da1fbc18d3c" />
+
+
+
 ### Visualization:
 ```python
-from sklearn.preprocessing import StandardScaler
-from sklearn.cluster import KMeans
+
 
 import matplotlib.pyplot as plt
 plt.figure(figsize=(8, 6))
@@ -71,3 +70,4 @@ plt.show()
 
 
 ### Result:
+Thus, Cluster and Visitor Segmentation for Navigation patterns in Python is implemented successfully.
